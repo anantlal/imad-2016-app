@@ -9,8 +9,63 @@ var container = {
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne = {
+  title : 'Article One | Anant Lal',
+  heading: 'Article One',
+  date: 'Sep 5, 2016',
+  content:`
+        <p>
+            This is the content for my first article. This is the content for my first article.This is the content for my first article. 
+            This is the content for my first article. This is the content for my first article. This is the content for my first article. 
+        </p>
+        <p>
+            This is the content for my first article. This is the content for my first article.This is the content for my first article. 
+            This is the content for my first article. This is the content for my first article. This is the content for my first article. 
+        </p>
+        <p>
+            This is the content for my first article. This is the content for my first article.This is the content for my first article. 
+            This is the content for my first article. This is the content for my first article. This is the content for my first article. 
+        </p> `
+};
+
+
+function  CreateTemplate(data){
+    var title = data.title;
+    var heading = data.heading;
+    var date = data.date;
+    var content = data.content;
+    var HtmlTemplate = `
+    <html> 
+    <head>
+        <title>
+            $(title)
+        </title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="/ui/style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <a href = "/">Home</a>
+            </div>
+            <hr/>
+            <h3>
+                $(heading)
+            </h3>
+            <div>
+                $(date)
+            </div>
+            <div>
+                $(content)
+            </div>
+        </div>
+    </body>
+</html> `
+;
+}
+
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.send(CreateTemplate(articleOne));
 });
 
 app.get('/article-one',function(req, res){
