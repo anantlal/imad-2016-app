@@ -9,17 +9,17 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/atricle-one',functiom(req, res)){
+app.get('/atricle-one',functiom(req, res){
     res.send("Article one requested and will be served here")
-}
+});
 
-app.get('/atricle-two',functiom(req, res)){
+app.get('/atricle-two',functiom(req, res){
     res.send("Article two requested and will be served here")
-}
+});
 
-app.get('/atricle-three',functiom(req, res)){
+app.get('/atricle-three',functiom(req, res){
     res.send("Article three requested and will be served here")
-}
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
